@@ -1,0 +1,29 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "URL Shortener";
+}
+
+<h1>URL Shortener</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="longUrlInput">Enter a Long URL:</label>
+        <input type="text" class="form-control" id="longUrlInput" name="LongUrl" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Get Short URL</button>
+</form>
+
+@if (Model.ShortenedUrl != null)
+{
+    <div class="mt-3">
+        <p><strong>Short URL:</strong> <a href="@Model.ShortenedUrl" target="_blank">@Model.ShortenedUrl</a></p>
+    </div>
+}
+
+@if (Model.ErrorMessage != null)
+{
+    <div class="alert alert-danger mt-3" role="alert">
+        @Model.ErrorMessage
+    </div>
+}
